@@ -1,18 +1,27 @@
 from playwright.sync_api import sync_playwright
 
+print("Starting...")
+
 with sync_playwright() as p:
-    browser = p.chromium.launch(headless=False)
+    browser = p.chromium.launch(headless=True)
     page = browser.new_page()
 
-    page.goto("https://leetcode.com/problems/asteroid-collision/description/")
+    page.goto(
+        "https://leetcode.com/problems/asteroid-collision/description/",
+        wait_until="networkidle",
+        timeout=60000,
+    )
 
-    # Wait until the real page has loaded.
-    page.wait_for_load_state("networkidle")
+    print("URL:", page.url)
+    print("Title:", page.title())
 
     html = page.content()
+
+    print("Length:", len(html))
 
     with open("page.html", "w", encoding="utf-8") as f:
         f.write(html)
 
-    input("Press Enter to close...")
     browser.close()
+
+print("Done")
