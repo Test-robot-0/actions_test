@@ -6,11 +6,15 @@ with sync_playwright() as p:
     browser = p.chromium.launch(headless=True)
     page = browser.new_page()
 
-    page.goto(
-        "https://leetcode.com/problems/asteroid-collision/description/",
-        wait_until="networkidle",
-        timeout=60000,
-    )
+    page.goto(url)
+    print("URL:", page.url)
+    print("Title:", page.title())
+
+    html = page.content()
+
+    print(html[:500])
+    
+    page.wait_for_timeout(10000)
 
     print("URL:", page.url)
     print("Title:", page.title())
