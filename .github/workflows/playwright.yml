@@ -22,7 +22,7 @@ jobs:
           playwright install --with-deps chromium
 
       - name: Run script
-        run: python try.py
+        run: python app.py
 
       - name: Upload HTML
         uses: actions/upload-artifact@v4
