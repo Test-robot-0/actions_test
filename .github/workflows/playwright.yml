@@ -22,8 +22,9 @@ jobs:
           playwright install --with-deps chromium
 
       - name: Run script
-        run: xvfb-run python app.py
-        run: python app.py
+        run: |
+          xvfb-run python app.py
+          python app.py
 
       - name: Upload HTML
         uses: actions/upload-artifact@v4
