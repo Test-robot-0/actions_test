@@ -23,8 +23,6 @@ jobs:
 
       - name: Run script
         run: xvfb-run python app.py
-
-      - name: Run script
         run: python app.py
 
       - name: Upload HTML
