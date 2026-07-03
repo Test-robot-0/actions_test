@@ -9,8 +9,13 @@ with sync_playwright() as p:
         wait_until="domcontentloaded"
     )
 
+    # Wait 5 seconds
     page.wait_for_timeout(5000)
 
+    # Save screenshot
+    page.screenshot(path="page.png", full_page=True)
+
+    # Save HTML
     html = page.content()
 
     with open("page.html", "w", encoding="utf-8") as f:
