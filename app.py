@@ -13,7 +13,7 @@ with sync_playwright() as p:
     page.wait_for_timeout(5000)
 
     # Save screenshot
-    page.screenshot(path="page.png", full_page=True)
+    #page.screenshot(path="page.png", full_page=True)
 
     # Save HTML
     html = page.content()
