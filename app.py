@@ -6,6 +6,7 @@ with sync_playwright() as p:
     browser = p.chromium.launch(headless=True)
     page = browser.new_page()
 
+    url = "https://leetcode.com/problems/asteroid-collision/description/"
     page.goto(url)
     print("URL:", page.url)
     print("Title:", page.title())
